@@ -18,7 +18,7 @@ To accomplish this task, the following items will have to be completed:
 
 **_Notation_**. In image processing, pixel (y,x) refers to the pixel in column x and row y, with pixel (0,0) at the upper-left corner and pixel (H-1,W-1) at the lower-right corner:
 
-<center>
+<p align="center">
 
 |   (0,0)   |   (0,1)   |   (0,2)   |
 |:---------:|:---------:|:---------:|
@@ -26,7 +26,7 @@ To accomplish this task, the following items will have to be completed:
 | **(2,0)** | **(2,1)** | **(2,2)** |
 | **(3,0)** | **(3,1)** | **(3,2)** |
 
-</center>
+</p>
 
 **_Energy Calculation_**. The first step is to calculate the energy of a pixel, which is the measure of its perceptual importance. The higher the energy, the less likely that the pixel will be included as part of a seam. The dual-gradient energy function is utilized in this project for energy calculation. The energy is high for pixels in the image where there is a rapid colour gradient. The seam carving technique avoids removing such high-energy pixels.
 
