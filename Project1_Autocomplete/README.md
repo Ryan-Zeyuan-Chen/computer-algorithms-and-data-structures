@@ -1,4 +1,4 @@
-# Project 1 - Autocomplete
+# Project 1: Autocomplete
 
 The objective of this project is to write a fast implementation of the autocomplete functionality.
 
@@ -21,7 +21,7 @@ struct term{
 };
 ```
 
-## Part 1 - read_in_terms
+## Part 1: read_in_terms
 
 ```
 void read_in_terms(struct term **terms, int *pnterms, char *filename);
@@ -31,7 +31,7 @@ The function takes in a pointer to a pointer to `struct term`, a pointer to an `
 
 The function allocates memory for all the terms in the file and stores a pointer to the block in `*terms`. The function stores the number of terms in `*pnterms`. The function reads in all the terms from filename, and places them in the block pointed to by `*terms`. The function also sorts the terms in ascending lexicographic order.
 
-## Part 2(a) - lowest_match
+## Part 2(a): lowest_match
 
 ```
 int lowest_match(struct term *terms, int nterms, char *substr);
@@ -41,7 +41,7 @@ The function returns the index of the first term in lexicographic ordering that 
 
 This function runs in Ο(log(nterms)) time, where `nterms` is the number of terms in `terms`.
 
-## Part 2(b) - highest_match
+## Part 2(b): highest_match
 
 ```
 int highest_match(struct term *terms, int nterms, char *substr);
@@ -51,10 +51,10 @@ The function returns the index of the last term in lexicographic ordering that m
 
 This function also runs in Ο(log(nterms)) time, where `nterms` is the number of terms in `terms`.
 
-## Part 3 - autocomplete
+## Part 3: autocomplete
 
 ```
 void autocomplete(struct term **answer, int *n_answer, struct term *terms, int nterms, char *substr);
 ```
 
-The function takes `terms`, the number of terms `nterms`, and the query string `substr`, and places the answers in `answer`, with `*n_answer` being the number of answers. The answers are also sorted by their corresponding weights. 
+The function takes `terms`, the number of terms `nterms`, and the query string `substr`, and places the answers in `answer`, with `*n_answer` being the number of answers. The answers are also sorted by their corresponding weights.
