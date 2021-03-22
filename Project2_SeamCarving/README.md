@@ -12,21 +12,17 @@ Images `3x4.png` and `6x5.png` are used for validation and the completed algorit
 
 To accomplish this task, the following items will have to be completed:
 
-* *Energy Calculation*
-* *Seam Identification*
-* *Seam Removal*
+* Energy Calculation
+* Seam Identification
+* Seam Removal
 
-**_Notation_**. In image processing, pixel (y,x) refers to the pixel in column x and row y, with pixel (0,0) at the upper-left corner and pixel (H-1,W-1) at the lower-right corner:
+**_Notation_**. In image processing, pixel (y, x) refers to the pixel in column x and row y, with pixel (0, 0) at the upper-left corner and pixel (H-1, W-1) at the lower-right corner:
 
-<p align="center">
-
-|   (0,0)   |   (0,1)   |   (0,2)   |
-|:---------:|:---------:|:---------:|
-| **(1,0)** | **(1,1)** | **(1,2)** |
-| **(2,0)** | **(2,1)** | **(2,2)** |
-| **(3,0)** | **(3,1)** | **(3,2)** |
-
-</p>
+|   (0, 0)   |   (0, 1)   |   (0, 2)   |
+|:----------:|:----------:|:----------:|
+| **(1, 0)** | **(1, 1)** | **(1, 2)** |
+| **(2, 0)** | **(2, 1)** | **(2, 2)** |
+| **(3, 0)** | **(3, 1)** | **(3, 2)** |
 
 **_Energy Calculation_**. The first step is to calculate the energy of a pixel, which is the measure of its perceptual importance. The higher the energy, the less likely that the pixel will be included as part of a seam. The dual-gradient energy function is utilized in this project for energy calculation. The energy is high for pixels in the image where there is a rapid colour gradient. The seam carving technique avoids removing such high-energy pixels.
 
@@ -69,9 +65,9 @@ void dynamic_seam(struct rgb_img *grad, double **best_arr);
 
 The function allocates and computes the dynamic array `*best_arr`.
 
-`(*best_arr)[i*width+j]` contains the minimum cost of a seam from the top of grad to the point (i,j).
+`(*best_arr)[i*width+j]` contains the minimum cost of a seam from the top of grad to the point (i, j).
 
-For `6x5.png`, the dual-gradient image is:
+For `6x5.png`, the dual-gradient energy of the image is:
 ```
 24      22      30      15      18      19
 12      23      15      23      10      15
@@ -97,7 +93,7 @@ void recover_path(double *best, int height, int width, int **path);
 
 The function allocates a `path` through the minimum seam as defined by `best`.
 
-For the best array above, the `path` is `[3, 4, 3, 2, 2]`.
+For `6x5.png`, the `path` is `[3, 4, 3, 2, 2]`.
 
 ## Part 4: Seam Removal
 
@@ -109,7 +105,7 @@ The function creates the destination image `struct rgb_img *dest` based on the s
 
 ## Part 5: Visualization
 
-The algorithm is executed repeatedly to remove seams from the `HJoceanSmall.bmp` image using `main.c`. The process is visualized below:
+The algorithm is executed repeatedly in `main.c` to remove seams from the `HJoceanSmall.bmp` image. The process is visualized below:
 
 <p align="center">
   <img src="HJoceanSmall.gif" alt="HJoeanSmall.gif"/>
