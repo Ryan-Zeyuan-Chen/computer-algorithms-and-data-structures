@@ -10,12 +10,14 @@ Images `3x4.png` and `6x5.png` are used for validation and the completed algorit
 
 To accomplish this task, the following items will have to be completed:
 
-* Energy Calculation
-* Seam Identification
-* Seam Removal
+* *Energy Calculation*
+* *Seam Identification*
+* *Seam Removal*
+
 
 *Notation*. In image processing, pixel (y,x) refers to the pixel in column x and row y, with pixel (0,0) at the upper-left corner and pixel (H-1,W-1) at the lower-right corner:
 
+| | | |
 |:-----:|:-----:|:-----:|
 | (0,0) | (0,1) | (0,2) |
 | (1,0) | (1,1) | (1,2) |
@@ -100,7 +102,7 @@ For the best array above, the `path` is `[3, 4, 3, 2, 2]`.
 void remove_seam(struct rgb_img *src, struct rgb_img **dest, int *path);
 ```
 
-The function creates the destination image `struct rgb_img *dest` based on the source image `struct rgb_img *src`, with the seam removed. 
+The function creates the destination image `struct rgb_img *dest` based on the source image `struct rgb_img *src`, with the seam removed.
 
 [underlying algorithm]: https://www.youtube.com/watch?v=6NcIJXTlugc
 [HJoceanSmall]: HJoceanSmall.bmp "HJoceanSmall.bmp"
