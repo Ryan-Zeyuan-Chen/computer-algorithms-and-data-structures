@@ -6,7 +6,9 @@ The objective of this project is to create a data type that resizes a H-by-W ima
 
 Images `3x4.png` and `6x5.png` are used for validation and the completed algorithm is tested using `HJoceanSmall.bmp`.
 
-![Josh Hug][HJoceanSmall]
+<p align="center">
+  <img src="HJoceanSmall.bmp" alt="HJoceanSmall.bmp"/>
+</p>
 
 To accomplish this task, the following items will have to be completed:
 
@@ -16,12 +18,11 @@ To accomplish this task, the following items will have to be completed:
 
 **_Notation_**. In image processing, pixel (y,x) refers to the pixel in column x and row y, with pixel (0,0) at the upper-left corner and pixel (H-1,W-1) at the lower-right corner:
 
-|<!-- -->|<!-- -->|<!-- -->|
-|:-----:|:-----:|:-----:|
-| (0,0) | (0,1) | (0,2) |
-| (1,0) | (1,1) | (1,2) |
-| (2,0) | (2,1) | (2,2) |
-| (3,0) | (3,1) | (3,2) |
+|   (0,0)   |   (0,1)   |   (0,2)   |
+|:---------:|:---------:|:---------:|
+| **(1,0)** | **(1,1)** | **(1,2)** |
+| **(2,0)** | **(2,1)** | **(2,2)** |
+| **(3,0)** | **(3,1)** | **(3,2)** |
 
 **_Energy Calculation_**. The first step is to calculate the energy of a pixel, which is the measure of its perceptual importance. The higher the energy, the less likely that the pixel will be included as part of a seam. The dual-gradient energy function is utilized in this project for energy calculation. The energy is high for pixels in the image where there is a rapid colour gradient. The seam carving technique avoids removing such high-energy pixels.
 
@@ -38,6 +39,8 @@ struct rgb_img{
 };
 ```
 
+`c_img.c` includes basic image manipulation tools as a groundwork for the project. `png2bin.py` includes Python scripts for file conversion between PNG images and BIN files. Development of the seam carving algorithm is implemented in `seamcarving.c`.
+
 ## Part 1: Dual-Gradient Energy Function
 
 ```
@@ -47,7 +50,6 @@ void calc_energy(struct rgb_img *im, struct rgb_img **grad);
 The function computes the dual-gradient energy, and places it in `struct rgb_img *grad`.
 
 The resultant dual-gradient energy of the image `3x4.png` is:
-
 ```
 14      22      14
 14      22      14
@@ -66,7 +68,6 @@ The function allocates and computes the dynamic array `*best_arr`.
 `(*best_arr)[i*width+j]` contains the minimum cost of a seam from the top of grad to the point (i,j).
 
 For `6x5.png`, the dual-gradient image is:
-
 ```
 24      22      30      15      18      19
 12      23      15      23      10      15
@@ -76,7 +77,6 @@ For `6x5.png`, the dual-gradient image is:
 ```
 
 The best array is:
-
 ```
 24.000000       22.000000       30.000000       15.000000       18.000000       19.000000
 34.000000       45.000000       30.000000       38.000000       25.000000       33.000000
@@ -103,5 +103,12 @@ void remove_seam(struct rgb_img *src, struct rgb_img **dest, int *path);
 
 The function creates the destination image `struct rgb_img *dest` based on the source image `struct rgb_img *src`, with the seam removed.
 
+## Part 5: Visualization
+
+The algorithm is executed repeatedly to remove seams from the `HJoeanSmall.bmp` image using `main.c`. The process is visualized below:
+
+<p align="center">
+  <img src="HJoceanSmall.gif" alt="HJoeanSmall.gif"/>
+</p>
+
 [underlying algorithm]: https://www.youtube.com/watch?v=6NcIJXTlugc
-[HJoceanSmall]: HJoceanSmall.bmp "HJoceanSmall.bmp"
