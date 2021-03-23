@@ -49,7 +49,17 @@ void calc_energy(struct rgb_img *im, struct rgb_img **grad);
 
 The function computes the dual-gradient energy, and places it in `struct rgb_img *grad`.
 
-The resultant dual-gradient energy of the image `3x4.png` is:
+The energy of pixel (y, x) is:
+
+ (R<sub>x</sub>(y, x)<sup>2</sup> + G<sub>x</sub>(y, x)<sup>2</sup> + B<sub>x</sub>(y, x)<sup>2</sup> + R<sub>y</sub>(y, x)<sup>2</sup> + G<sub>y</sub>(y, x)<sup>2</sup> + B<sub>y</sub>(y, x)<sup>2</sup>)<sup>1/2</sup>
+
+ Where R<sub>x</sub>, R<sub>y</sub>, G<sub>x</sub>, G<sub>y</sub>, B<sub>x</sub>, B<sub>y</sub> are the differences in the red, green, and blue components of pixels surrounding the central pixel, along the x and y-axis.
+
+ For example, R<sub>x</sub>(y, x) = (y, x + 1)<sub>red</sub> - (y, x - 1)<sub>red</sub>
+
+ To store the dual-gradient energy in a `struct rgb_img`, the original energy value is divided by 10 and casted to `uint8_t`. For each pixel, the r, g, and b channels are set to the same energy value.
+
+For example, the resultant dual-gradient energy of the image `3x4.png` is:
 ```
 14      22      14
 14      22      14
